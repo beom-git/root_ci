@@ -1,7 +1,7 @@
 ############################################################
 # RTL
 ############################################################
-# [INCLUDE: folders] allow ip_bundle
+# [INCLUDE: folders] allow ip bundle sources
 !**/ip_bundle/
 
 ############################################################
@@ -62,20 +62,118 @@ temp/
 tmp/
 
 ############################################################
-# Logs / Reports policy
+# C build artifacts
 ############################################################
-# [EXCLUDE: files] ignore all logs/reports by default
+# [EXCLUDE: files]
+*.d
+*.o
+*.ko
+*.obj
+*.elf
+*.vhx
+*.bin
+*.ilk
+*.map
+*.exp
+*.gch
+*.pch
+*.lib
+*.a
+*.la
+*.lo
+*.dll
+*.so
+*.so.*
+*.dylib
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+*.su
+*.idb
+*.pdb
+*.mod*
+*.cmd
+
+# [EXCLUDE: folders]
+*.dSYM/
+.tmp_versions/
+
+# [EXCLUDE: kernel/module]
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+############################################################
+# Synopsys VCS
+############################################################
+# waveform
+*.vcd
+*.vpd
+*.evcd
+*.fsdb
+
+# simulation binary/db
+simv
+simv.daidir/
+simv.db.dir/
+simv.vdb/
+urgReport/
+csrc/
+
+# misc
+ucli.key
+vc_hdrs.h
+
+############################################################
+# Cadence (Incisive / Xcelium)
+############################################################
+# files
+*.elog
+irun.log
+xrun.log
+irun.key
+xrun.key
+irun.history
+xrun.history
+ncelab_*.err
+xmelab_*.err
+ncsim_*.err
+xmsim_*.err
+bpad_*.err
+
+# folders
+INCA_libs/
+xcelium.d/
+.bpad/
+.simvision/
+waves.shm/
+wave/
+
+############################################################
+# Editor / misc
+############################################################
+*.swp
+*.swo
+
+############################################################
+# Logs / Reports policy (MUST BE LAST)
+############################################################
+# ignore all logs/reports by default
 *.log
 *.rpt
 
-# [INCLUDE: folders] allow hosting folders
+# allow hosting folders
 !**/log/
 !**/logs/
 !**/report/
 !**/reports/
 !**/rpt/
 
-# [INCLUDE: files in folders] re-include everything under them
+# re-include files inside them
 !**/log/**
 !**/logs/**
 !**/report/**
