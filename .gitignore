@@ -1,59 +1,11 @@
 ############################################################
-# RTL
+# Flow: Common (all flows)
 ############################################################
-# [INCLUDE: folders] allow ip bundle sources
-!**/ip_bundle/
+#------------------------------------------------------------
+# Tool: Common
+#------------------------------------------------------------
 
-############################################################
-# Design Compiler
-############################################################
-# [EXCLUDE: files]
-*.pvl
-*.syn
-*.mr
-moduleparamid
-*.svf
-
-# [EXCLUDE: folders / prefixes]
-alib-*
-WORK.*
-**/svf/
-
-############################################################
-# Formality
-############################################################
-# [EXCLUDE: files]
-*.fm.*
-*.fpm
-*.svf.old
-FM_INFO
-
-# [EXCLUDE: prefixes]
-formality_*
-
-############################################################
-# VC Static / Verdi / Novas
-############################################################
-# [EXCLUDE: prefixes]
-vcst*
-Verdi*
-verdi*
-novas*
-
-# [EXCLUDE: files]
-.vcstPref
-.vc_env_*.txt
-*.session_rtdb*
-
-# [EXCLUDE: folders]
-*.session_rtdb.bak/
-**/.internal/
-**/.lock
-
-############################################################
-# Common EDA temp / working dirs
-############################################################
-# [EXCLUDE: folders]
+# [EXCLUDE: folder]
 work/
 work_*/
 wrk/
@@ -61,10 +13,206 @@ wrk_*/
 temp/
 tmp/
 
+# [EXCLUDE: file]
+*.swp
+*.swo
+
+# [INCLUDE: folder]
+# (none)
+
+# [INCLUDE: file]
+# (none)
+
+
 ############################################################
-# C build artifacts
+# Flow: RTL (01.rtl)
 ############################################################
-# [EXCLUDE: files]
+#------------------------------------------------------------
+# Tool: Common RTL packaging
+#------------------------------------------------------------
+
+# [EXCLUDE: folder]
+# (none)
+
+# [EXCLUDE: file]
+# (none)
+
+# [INCLUDE: folder]
+!**/ip_bundle/
+
+# [INCLUDE: file]
+# (none)
+
+
+############################################################
+# Flow: Constraint (00.constraints)
+############################################################
+#------------------------------------------------------------
+# Tool: Common Constraints
+#------------------------------------------------------------
+
+# [EXCLUDE: folder]
+# (none)
+
+# [EXCLUDE: file]
+# (none)
+
+# [INCLUDE: folder]
+# (none)
+
+# [INCLUDE: file]
+# (none)
+
+
+############################################################
+# Flow: Lint / CDC / UPF Verify (02.lint, 03.upfVerify, 04.cdcVerify)
+############################################################
+#------------------------------------------------------------
+# Tool: Synopsys VC Static / Verdi / Novas
+#------------------------------------------------------------
+
+# [EXCLUDE: folder]
+*.session_rtdb.bak/
+**/.internal/
+**/.lock
+
+# [EXCLUDE: file]
+.vcstPref
+.vc_env_*.txt
+*.session_rtdb*
+
+# [EXCLUDE: prefix]
+vcst*
+Verdi*
+verdi*
+novas*
+
+# [INCLUDE: folder]
+# (none)
+
+# [INCLUDE: file]
+# (none)
+
+
+############################################################
+# Flow: Synthesis (05.synthesis)
+############################################################
+#------------------------------------------------------------
+# Tool: Synopsys Design Compiler
+#------------------------------------------------------------
+
+# [EXCLUDE: folder]
+alib-*
+WORK.*
+**/svf/
+
+# [EXCLUDE: file]
+*.pvl
+*.syn
+*.mr
+moduleparamid
+*.svf
+
+# [INCLUDE: folder]
+# (none)
+
+# [INCLUDE: file]
+# (none)
+
+
+############################################################
+# Flow: Formal (06.formal)
+############################################################
+#------------------------------------------------------------
+# Tool: Synopsys Formality
+#------------------------------------------------------------
+
+# [EXCLUDE: folder]
+FM_INFO/
+
+# [EXCLUDE: file]
+*.fm.*
+*.fpm
+*.svf.old
+
+# [EXCLUDE: prefix]
+formality_*
+
+# [INCLUDE: folder]
+# (none)
+
+# [INCLUDE: file]
+# (none)
+
+
+############################################################
+# Flow: Simulation (10.sim)
+############################################################
+#------------------------------------------------------------
+# Tool: Synopsys VCS
+#------------------------------------------------------------
+
+# [EXCLUDE: folder]
+simv.daidir/
+simv.db.dir/
+simv.vdb/
+urgReport/
+csrc/
+
+# [EXCLUDE: file]
+*.vcd
+*.vpd
+*.evcd
+*.fsdb
+simv
+ucli.key
+vc_hdrs.h
+
+#------------------------------------------------------------
+# Tool: Cadence (Incisive / Xcelium)
+#------------------------------------------------------------
+
+# [EXCLUDE: folder]
+INCA_libs/
+xcelium.d/
+.bpad/
+.simvision/
+waves.shm/
+wave/
+
+# [EXCLUDE: file]
+*.elog
+irun.log
+xrun.log
+irun.key
+xrun.key
+irun.history
+xrun.history
+ncelab_*.err
+xmelab_*.err
+ncsim_*.err
+xmsim_*.err
+bpad_*.err
+
+# [INCLUDE: folder]
+# (none)
+
+# [INCLUDE: file]
+# (none)
+
+
+############################################################
+# Flow: Build outputs (tool-agnostic C/C++ artifacts)
+############################################################
+#------------------------------------------------------------
+# Tool: Common compiler/linker
+#------------------------------------------------------------
+
+# [EXCLUDE: folder]
+*.dSYM/
+.tmp_versions/
+
+# [EXCLUDE: file]
 *.d
 *.o
 *.ko
@@ -96,84 +244,37 @@ tmp/
 *.pdb
 *.mod*
 *.cmd
-
-# [EXCLUDE: folders]
-*.dSYM/
-.tmp_versions/
-
-# [EXCLUDE: kernel/module]
 modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
 
-############################################################
-# Synopsys VCS
-############################################################
-# waveform
-*.vcd
-*.vpd
-*.evcd
-*.fsdb
+# [INCLUDE: folder]
+# (none)
 
-# simulation binary/db
-simv
-simv.daidir/
-simv.db.dir/
-simv.vdb/
-urgReport/
-csrc/
+# [INCLUDE: file]
+# (none)
 
-# misc
-ucli.key
-vc_hdrs.h
 
 ############################################################
-# Cadence (Incisive / Xcelium)
+# Flow: Logs / Reports policy (all flows)
 ############################################################
-# files
-*.elog
-irun.log
-xrun.log
-irun.key
-xrun.key
-irun.history
-xrun.history
-ncelab_*.err
-xmelab_*.err
-ncsim_*.err
-xmsim_*.err
-bpad_*.err
+#------------------------------------------------------------
+# Tool: Common
+#------------------------------------------------------------
 
-# folders
-INCA_libs/
-xcelium.d/
-.bpad/
-.simvision/
-waves.shm/
-wave/
-
-############################################################
-# Editor / misc
-############################################################
-*.swp
-*.swo
-
-############################################################
-# Logs / Reports policy (MUST BE LAST)
-############################################################
-# ignore all logs/reports by default
+# [EXCLUDE: file]
 *.log
 *.rpt
 
-# allow hosting folders
+# [INCLUDE: folder]
 !**/log/
 !**/logs/
 !**/report/
 !**/reports/
 !**/rpt/
 
-# re-include files inside them
+# [INCLUDE: file]
 !**/log/**
 !**/logs/**
 !**/report/**
