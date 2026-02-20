@@ -1,39 +1,59 @@
 ############################################################
+# RTL
+############################################################
+# [INCLUDE: folders] allow ip_bundle
+!**/ip_bundle/
+
+############################################################
 # Design Compiler
 ############################################################
-default.svf
+# [EXCLUDE: files]
 *.pvl
 *.syn
 *.mr
+moduleparamid
+*.svf
+
+# [EXCLUDE: folders / prefixes]
 alib-*
 WORK.*
-moduleparamid
+**/svf/
 
 ############################################################
 # Formality
 ############################################################
-# tool outputs
+# [EXCLUDE: files]
 *.fm.*
 *.fpm
 *.svf.old
 FM_INFO
+
+# [EXCLUDE: prefixes]
 formality_*
 
 ############################################################
 # VC Static / Verdi / Novas
 ############################################################
+# [EXCLUDE: prefixes]
 vcst*
 Verdi*
 verdi*
 novas*
 
-*.session_rtdb
+# [EXCLUDE: files]
 .vcstPref
+.vc_env_*.txt
+*.session_rtdb*
+
+# [EXCLUDE: folders]
+*.session_rtdb.bak/
+**/.internal/
+**/.lock
 
 ############################################################
 # Common EDA temp / working dirs
 ############################################################
-# 대부분 EDA툴 work/report/log 디렉토리 패턴
+# [EXCLUDE: folders]
 work/
 work_*/
 wrk/
@@ -42,10 +62,22 @@ temp/
 tmp/
 
 ############################################################
-# Allow logs and reports
+# Logs / Reports policy
 ############################################################
-#log/
-#logs/
-#report/
-#reports/
-#rpt/
+# [EXCLUDE: files] ignore all logs/reports by default
+*.log
+*.rpt
+
+# [INCLUDE: folders] allow hosting folders
+!**/log/
+!**/logs/
+!**/report/
+!**/reports/
+!**/rpt/
+
+# [INCLUDE: files in folders] re-include everything under them
+!**/log/**
+!**/logs/**
+!**/report/**
+!**/reports/**
+!**/rpt/**
