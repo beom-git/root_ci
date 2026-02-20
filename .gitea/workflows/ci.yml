@@ -1,0 +1,31 @@
+name: Root CI Dispatcher
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+
+jobs:
+  dispatch:
+    runs-on: [exp2]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dispatch by commit message
+        env:
+          # root-owned provider switch: gitea | jenkins
+          CI_PROVIDER: ${{ vars.CI_PROVIDER }}
+
+          # gitea context
+          COMMIT_MESSAGE: ${{ gitea.event.head_commit.message }}
+          GIT_SHA: ${{ gitea.sha }}
+          GIT_REF: ${{ gitea.ref }}
+
+          # jenkins secret variables (only used when CI_PROVIDER=jenkins)
+          JENKINS_URL: ${{ secrets.JENKINS_URL }}
+          JENKINS_JOB: ${{ secrets.JENKINS_JOB }}
+          JENKINS_USER: ${{ secrets.JENKINS_USER }}
+          JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
+        run: |
+          chmod +x ./.gitea/dispatch_ci.sh
+          ./.gitea/dispatch_ci.sh

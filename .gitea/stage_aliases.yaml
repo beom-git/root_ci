@@ -1,0 +1,8 @@
+# Canonical stage -> aliases
+stages:
+  lint: ["lint", "sglint"]
+  cdc: ["cdc", "cdcv"]
+  vclp: ["vclp", "upf", "upfverify", "lp"]
+  synth: ["synth", "syn", "synthesis", "dc"]
+  formal: ["formal", "fm", "formality"]
+  all: ["all", "full"]

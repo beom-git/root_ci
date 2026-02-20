@@ -1,0 +1,10 @@
+# Canonical component ID -> path + aliases
+# alias first match, then fallback to CI[ID]
+components:
+  CPU:
+    path: "03.component/01.cpu"
+    aliases: ["cpu", "01.cpu", "core"]
+
+  DMA:
+    path: "03.component/17.dma"
+    aliases: ["dma", "17.dma"]
